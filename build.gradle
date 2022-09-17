@@ -15,9 +15,8 @@
  */
 
 buildscript {
-    ext.kotlin_version = '1.4.31'
-    ext.compose_version = '1.0.0-beta02'
-    ext.coroutines_version = '1.4.2'
+    ext.kotlin_version = '1.7.10'
+    ext.compose_version = '1.2.1'
 
     repositories {
         google()
@@ -25,7 +24,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-alpha09'
+        classpath 'com.android.tools.build:gradle:7.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }

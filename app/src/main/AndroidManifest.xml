@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidDevChallenge">
         <activity
-            android:name="com.example.androiddevchallenge.MainActivity"
+            android:name="com.androiddevchallenge.week3.americas.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AndroidDevChallenge.NoActionBar">
             <intent-filter>

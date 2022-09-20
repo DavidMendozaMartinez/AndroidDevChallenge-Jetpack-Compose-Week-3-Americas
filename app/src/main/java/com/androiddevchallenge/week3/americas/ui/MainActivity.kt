@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.androiddevchallenge.week3.americas
+package com.androiddevchallenge.week3.americas.ui
 
 import android.os.Bundle
 import androidx.activity.compose.setContent

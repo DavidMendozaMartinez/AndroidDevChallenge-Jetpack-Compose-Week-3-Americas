@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WeTrade">
         <activity
-            android:name="com.androiddevchallenge.week3.americas.MainActivity"
+            android:name="com.androiddevchallenge.week3.americas.ui.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.WeTrade.NoActionBar">
             <intent-filter>

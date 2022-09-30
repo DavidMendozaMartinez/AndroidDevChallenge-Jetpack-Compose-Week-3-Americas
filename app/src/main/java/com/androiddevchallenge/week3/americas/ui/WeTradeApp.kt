@@ -18,6 +18,7 @@ package com.androiddevchallenge.week3.americas.ui
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.compose.rememberNavController
 import com.androiddevchallenge.week3.americas.ui.theme.WeTradeTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -25,6 +26,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 fun WeTradeApp() {
     WeTradeTheme {
         val systemUiController = rememberSystemUiController()
+        val navController = rememberNavController()
         val useDarkIcons = MaterialTheme.colors.isLight
 
         // Update all of the system bar colors to be transparent, and use
@@ -33,5 +35,7 @@ fun WeTradeApp() {
             color = Color.Transparent,
             darkIcons = useDarkIcons
         )
+
+        NavGraph(navController = navController)
     }
 }

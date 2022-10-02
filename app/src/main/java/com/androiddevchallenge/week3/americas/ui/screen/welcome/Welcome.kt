@@ -15,8 +15,21 @@
  */
 package com.androiddevchallenge.week3.americas.ui.screen.welcome
 
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
+import com.androiddevchallenge.week3.americas.ui.theme.WeTradeTheme
 
 @Composable
 fun Welcome() {
+}
+
+@Preview(name = "Light Theme", widthDp = 360, heightDp = 640, uiMode = UI_MODE_NIGHT_NO)
+@Preview(name = "Dark Theme", widthDp = 360, heightDp = 640, uiMode = UI_MODE_NIGHT_YES)
+@Composable
+fun WelcomePreview() {
+    WeTradeTheme {
+        Welcome()
+    }
 }

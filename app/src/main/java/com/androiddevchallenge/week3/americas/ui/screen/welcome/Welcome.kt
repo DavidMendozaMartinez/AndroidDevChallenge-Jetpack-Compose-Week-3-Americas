@@ -42,7 +42,10 @@ import com.androiddevchallenge.week3.americas.R
 import com.androiddevchallenge.week3.americas.ui.theme.WeTradeTheme
 
 @Composable
-fun Welcome() {
+fun Welcome(
+    onSignUpClicked: () -> Unit = {},
+    onLogInClicked: () -> Unit = {}
+) {
 
     Box {
         Image(
@@ -68,7 +71,7 @@ fun Welcome() {
             )
         ) {
             Button(
-                onClick = {},
+                onClick = onSignUpClicked,
                 modifier = Modifier
                     .weight(1f)
                     .height(48.dp),
@@ -85,7 +88,7 @@ fun Welcome() {
             }
 
             OutlinedButton(
-                onClick = {},
+                onClick = onLogInClicked,
                 modifier = Modifier
                     .weight(1f)
                     .height(48.dp),

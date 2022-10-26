@@ -59,7 +59,7 @@ import com.androiddevchallenge.week3.americas.ui.theme.WeTradeTheme
 import com.androiddevchallenge.week3.americas.ui.theme.White
 
 @Composable
-fun LogIn() {
+fun LogIn(onLogInClicked: (email: String, password: String) -> Unit = { _, _ -> }) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -143,7 +143,7 @@ fun LogIn() {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {},
+            onClick = { onLogInClicked(email, password) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),

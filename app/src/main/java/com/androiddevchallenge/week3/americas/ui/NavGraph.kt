@@ -47,7 +47,11 @@ fun NavGraph(
                 onLogInClicked = { navController.navigate(Destinations.LOG_IN.route) }
             )
         }
-        composable(Destinations.LOG_IN.route) { LogIn() }
+        composable(Destinations.LOG_IN.route) {
+            LogIn(
+                onLogInClicked = { _, _ -> navController.navigate(Destinations.HOME.route) }
+            )
+        }
         composable(Destinations.HOME.route) {}
     }
 }

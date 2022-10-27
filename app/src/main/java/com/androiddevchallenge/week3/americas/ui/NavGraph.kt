@@ -20,6 +20,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.androiddevchallenge.week3.americas.ui.screen.home.Home
 import com.androiddevchallenge.week3.americas.ui.screen.login.LogIn
 import com.androiddevchallenge.week3.americas.ui.screen.welcome.Welcome
 
@@ -52,6 +53,6 @@ fun NavGraph(
                 onLogInClicked = { _, _ -> navController.navigate(Destinations.HOME.route) }
             )
         }
-        composable(Destinations.HOME.route) {}
+        composable(Destinations.HOME.route) { Home() }
     }
 }

@@ -1,7 +1,5 @@
 # Template repository
 
-This repo is no longer being maintained.
-
 Template repository for the Jetpack Compose [#AndroidDevChallenge](https://developer.android.com/dev-challenge). January 2023.
 
 ## Getting started

@@ -1,6 +1,6 @@
 # Template
 
-Repository for the Jetpack Compose [#AndroidDevChallenge](https://developer.android.com/dev-challenge). February 2023.
+Repository for the Jetpack Compose [#AndroidDevChallenge](https://developer.android.com/dev-challenge).
 
 ## Getting started
 Copy this repository by pressing the "Use this template" button in Github.

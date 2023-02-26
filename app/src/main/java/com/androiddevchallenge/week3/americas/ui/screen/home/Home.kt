@@ -25,7 +25,6 @@ import com.androiddevchallenge.week3.americas.ui.theme.WeTradeTheme
 fun Home() {
 }
 
-@Preview(name = "Light Theme", widthDp = 360, heightDp = 640, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Preview(name = "Dark Theme", widthDp = 360, heightDp = 640, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun LogInPreview() {

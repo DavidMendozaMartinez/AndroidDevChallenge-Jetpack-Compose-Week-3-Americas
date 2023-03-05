@@ -86,13 +86,6 @@ object PositionRepositoy {
             sparklineResId = R.drawable.home_rcl,
             currentPrice = BigDecimal(9.184),
             percentageChange = 1.69f
-        ),
-        Position(
-            tickerSymbol = "TRVL",
-            name = "Travelocity Inc.",
-            sparklineResId = R.drawable.home_trvl,
-            currentPrice = BigDecimal(654),
-            percentageChange = 3.23f
         )
     )
 }

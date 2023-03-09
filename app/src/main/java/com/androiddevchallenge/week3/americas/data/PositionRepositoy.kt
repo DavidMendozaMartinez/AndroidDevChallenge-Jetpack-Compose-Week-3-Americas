@@ -72,13 +72,6 @@ object PositionRepositoy {
             sparklineResId = R.drawable.home_mar,
             currentPrice = BigDecimal(521),
             percentageChange = 2.75f
-        ),
-        Position(
-            tickerSymbol = "CCL",
-            name = "Carnival Corp",
-            sparklineResId = R.drawable.home_ccl,
-            currentPrice = BigDecimal(5.481),
-            percentageChange = 0.14f
         )
     )
 }

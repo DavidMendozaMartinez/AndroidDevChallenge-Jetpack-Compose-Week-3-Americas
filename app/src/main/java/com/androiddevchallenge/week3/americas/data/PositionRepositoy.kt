@@ -65,13 +65,6 @@ object PositionRepositoy {
             sparklineResId = R.drawable.home_jblu,
             currentPrice = BigDecimal(8.521),
             percentageChange = 1.56f
-        ),
-        Position(
-            tickerSymbol = "MAR",
-            name = "Marriott International Inc.",
-            sparklineResId = R.drawable.home_mar,
-            currentPrice = BigDecimal(521),
-            percentageChange = 2.75f
         )
     )
 }

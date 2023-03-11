@@ -58,13 +58,6 @@ object PositionRepositoy {
             sparklineResId = R.drawable.home_eadsy,
             currentPrice = BigDecimal(12.301),
             percentageChange = 1.38f
-        ),
-        Position(
-            tickerSymbol = "JBLU",
-            name = "Jetblue Airways Corp.",
-            sparklineResId = R.drawable.home_jblu,
-            currentPrice = BigDecimal(8.521),
-            percentageChange = 1.56f
         )
     )
 }

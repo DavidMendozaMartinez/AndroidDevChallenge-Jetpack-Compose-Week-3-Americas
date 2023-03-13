@@ -44,13 +44,6 @@ object PositionRepositoy {
             sparklineResId = R.drawable.home_dal,
             currentPrice = BigDecimal(893.50),
             percentageChange = -0.54f
-        ),
-        Position(
-            tickerSymbol = "EXPE",
-            name = "Expedia Group Inc.",
-            sparklineResId = R.drawable.home_exp,
-            currentPrice = BigDecimal(12.301),
-            percentageChange = 2.51f
-        )
+        
     )
 }

@@ -37,13 +37,6 @@ object PositionRepositoy {
             sparklineResId = R.drawable.home_ba,
             currentPrice = BigDecimal(1.293),
             percentageChange = 4.18f
-        ),
-        Position(
-            tickerSymbol = "DAL",
-            name = "Delta Airlines Inc.",
-            sparklineResId = R.drawable.home_dal,
-            currentPrice = BigDecimal(893.50),
-            percentageChange = -0.54f
-        
+        )
     )
 }

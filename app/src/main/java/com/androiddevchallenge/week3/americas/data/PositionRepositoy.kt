@@ -30,13 +30,6 @@ object PositionRepositoy {
             sparklineResId = R.drawable.home_alk,
             currentPrice = BigDecimal(7.918),
             percentageChange = -0.54f
-        ),
-        Position(
-            tickerSymbol = "BA",
-            name = "Boeing Co.",
-            sparklineResId = R.drawable.home_ba,
-            currentPrice = BigDecimal(1.293),
-            percentageChange = 4.18f
         )
     )
 }

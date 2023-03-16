@@ -24,12 +24,5 @@ import java.math.BigDecimal
  */
 object PositionRepositoy {
     fun getPositions(): List<Position> = listOf(
-        Position(
-            tickerSymbol = "ALK",
-            name = "Alaska Air Group, Inc.",
-            sparklineResId = R.drawable.home_alk,
-            currentPrice = BigDecimal(7.918),
-            percentageChange = -0.54f
-        )
     )
 }

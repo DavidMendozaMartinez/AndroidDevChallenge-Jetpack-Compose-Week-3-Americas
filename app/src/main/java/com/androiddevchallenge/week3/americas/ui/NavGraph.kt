@@ -31,6 +31,7 @@ enum class Destinations(val route: String) {
     WELCOME("welcome"),
     LOG_IN("logIn"),
     HOME("home")
+    SETTINGS("settings")
 }
 
 @Composable

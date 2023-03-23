@@ -56,6 +56,6 @@ fun NavGraph(
         }
         composable(Destinations.HOME.route) { Home() }
         
-        composable(Destinations.SETTINGS.route) { }
+        composable(Destinations.SETTINGS.route) { Settings() }
     }
 }

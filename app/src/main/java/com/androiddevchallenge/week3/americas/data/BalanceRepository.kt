@@ -24,6 +24,6 @@ import java.math.BigDecimal
 object BalanceRepositoy {
     fun getBalance(): Balance = Balance(
         total = BigDecimal(84_247),
-        change = 573.35f
+        change = 73.35f
     )
 }

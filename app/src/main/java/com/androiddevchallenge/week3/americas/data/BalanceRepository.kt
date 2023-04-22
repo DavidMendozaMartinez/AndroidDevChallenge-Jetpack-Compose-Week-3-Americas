@@ -52,6 +52,17 @@ object BalanceRepositoy {
             total = BigDecimal(8_983),
             change = 8.568F
         ),
-    )
+        Balance(
+            total = BigDecimal(8_983),
+            change = 8.568F
+        ),
+        Balance(
+            total = BigDecimal(8_983),
+            change = 8.568F
+        ),
+        Balance(
+            total = BigDecimal(8_983),
+            change = 8.568F
+        ),
     )
 }

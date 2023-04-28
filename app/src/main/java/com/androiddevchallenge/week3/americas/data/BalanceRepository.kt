@@ -29,7 +29,7 @@ object BalanceRepositoy {
     
     fun getBalances(): List<Balance> = listOf(
         Balance(
-            total = BigDecimal(8_983),
+            total = BigDecimal(0),
             change = 8.568F
         ),
     )

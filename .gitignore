@@ -17,11 +17,6 @@ private.properties
 proguard/
 proguard-project.txt
 
-# Eclipse files
-.project
-.classpath
-.settings/
-
 # Android Studio/IDEA
 *.iml
 .idea

@@ -1,7 +1,6 @@
 
 # generated files
 bin/
-gen/
 
 # Ignore gradle files
 .gradle/

@@ -9,7 +9,3 @@ captures
 # IntelliJ .idea folder
 /.idea
 *.iml
-
-# General
-.DS_Store
-.externalNativeBuild

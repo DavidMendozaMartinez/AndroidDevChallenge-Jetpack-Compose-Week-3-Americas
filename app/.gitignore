@@ -4,8 +4,6 @@ build/
 
 captures
 
-/local.properties
-
 # IntelliJ .idea folder
 /.idea
 *.iml

@@ -2,8 +2,6 @@
 .gradle
 build/
 
-captures
-
 # IntelliJ .idea folder
 /.idea
 *.iml

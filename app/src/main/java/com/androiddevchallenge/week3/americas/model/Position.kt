@@ -24,5 +24,4 @@ data class Position(
     val name: String,
     val sparklineResId: Int,
     val currentPrice: BigDecimal,
-    val percentageChange: Float
 )

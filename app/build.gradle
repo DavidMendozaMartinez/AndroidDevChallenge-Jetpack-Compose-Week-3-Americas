@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.androiddevchallenge.week3.americas"
         minSdkVersion 11
-        targetSdkVersion 11
+        targetSdkVersion 12
         versionCode 1
         versionName "1.0"
 

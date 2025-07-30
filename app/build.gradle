@@ -7,12 +7,12 @@ plugins {
 }
 
 android {
-    namespace = "com.example.androiddevchallenge"
+    namespace = "com.androiddevchallenge.week3.americas"
 
     compileSdkVersion 36
 
     defaultConfig {
-        applicationId "com.example.androiddevchallenge"
+        applicationId "com.androiddevchallenge.week3.americas"
         minSdkVersion 23
         targetSdkVersion 36
         versionCode 1

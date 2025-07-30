@@ -18,44 +18,15 @@ package com.androiddevchallenge.week3.americas
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.activity.enableEdgeToEdge
 import com.androiddevchallenge.week3.americas.ui.theme.WeTradeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
-            WeTradeTheme {
-                WeTradeApp()
-            }
+            WeTradeTheme {}
         }
-    }
-}
-
-// Start building your app here!
-@Composable
-fun WeTradeApp() {
-    Surface(color = MaterialTheme.colors.background) {
-        Text(text = "Ready... Set... GO!")
-    }
-}
-
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun LightPreview() {
-    WeTradeTheme {
-        WeTradeApp()
-    }
-}
-
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun DarkPreview() {
-    WeTradeTheme(darkTheme = true) {
-        WeTradeApp()
     }
 }

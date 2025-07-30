@@ -23,14 +23,14 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.androiddevchallenge.week3.americas.ui.theme.MyTheme
+import com.androiddevchallenge.week3.americas.ui.theme.WeTradeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyTheme {
-                MyApp()
+            WeTradeTheme {
+                WeTradeApp()
             }
         }
     }
@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
 
 // Start building your app here!
 @Composable
-fun MyApp() {
+fun WeTradeApp() {
     Surface(color = MaterialTheme.colors.background) {
         Text(text = "Ready... Set... GO!")
     }
@@ -47,15 +47,15 @@ fun MyApp() {
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun LightPreview() {
-    MyTheme {
-        MyApp()
+    WeTradeTheme {
+        WeTradeApp()
     }
 }
 
 @Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        MyApp()
+    WeTradeTheme(darkTheme = true) {
+        WeTradeApp()
     }
 }

@@ -19,6 +19,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.androiddevchallenge.week3.americas.navigation.WeTradeNavHost
 import com.androiddevchallenge.week3.americas.ui.theme.WeTradeTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +29,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            WeTradeTheme {}
+            WeTradeTheme {
+                val navController: NavHostController = rememberNavController()
+                WeTradeNavHost(navController = navController)
+            }
         }
     }
 }

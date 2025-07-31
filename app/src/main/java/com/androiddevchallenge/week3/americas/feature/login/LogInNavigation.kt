@@ -26,9 +26,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 object LogInRoute
 
-fun NavGraphBuilder.logInScreen() {
+fun NavGraphBuilder.logInScreen(onLogInClick: () -> Unit) {
     composable<LogInRoute> {
-        LogInRoute()
+        LogInRoute(onLogInClick = onLogInClick)
     }
 }
 
@@ -37,8 +37,12 @@ fun NavController.navigateToLogIn(navOptions: NavOptions? = null) {
 }
 
 @Composable
-internal fun LogInRoute(modifier: Modifier = Modifier) {
+internal fun LogInRoute(
+    onLogInClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     LogInScreen(
+        onLogInClick = onLogInClick,
         modifier = modifier,
     )
 }

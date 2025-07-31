@@ -39,6 +39,8 @@ fun WeTradeNavHost(
             onLogInClick = { navController.navigateToLogIn() },
         )
 
-        logInScreen()
+        logInScreen(
+            onLogInClick = {},
+        )
     }
 }

@@ -32,6 +32,9 @@ fun WeTradeNavHost(
         startDestination = WelcomeRoute,
         modifier = modifier,
     ) {
-        welcomeScreen()
+        welcomeScreen(
+            onSignUpClick = {},
+            onLogInClick = {},
+        )
     }
 }

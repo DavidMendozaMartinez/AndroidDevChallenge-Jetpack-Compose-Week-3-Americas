@@ -24,15 +24,27 @@ import kotlinx.serialization.Serializable
 @Serializable
 object WelcomeRoute
 
-fun NavGraphBuilder.welcomeScreen() {
+fun NavGraphBuilder.welcomeScreen(
+    onSignUpClick: () -> Unit,
+    onLogInClick: () -> Unit,
+) {
     composable<WelcomeRoute> {
-        WelcomeRoute()
+        WelcomeRoute(
+            onSignUpClick = onSignUpClick,
+            onLogInClick = onLogInClick,
+        )
     }
 }
 
 @Composable
-internal fun WelcomeRoute(modifier: Modifier = Modifier) {
+internal fun WelcomeRoute(
+    onSignUpClick: () -> Unit,
+    onLogInClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     WelcomeScreen(
+        onSignUpClick = onSignUpClick,
+        onLogInClick = onLogInClick,
         modifier = modifier,
     )
 }

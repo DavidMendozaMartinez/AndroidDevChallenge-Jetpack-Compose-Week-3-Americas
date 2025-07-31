@@ -13,4 +13,9 @@
 
     <string name="welcome_button_sign_up">Get started</string>
     <string name="welcome_button_log_in">Log in</string>
+
+    <string name="log_in_title">Welcome\nback</string>
+    <string name="log_in_placeholder_email">Email address</string>
+    <string name="log_in_placeholder_password">Password</string>
+    <string name="log_in_button_log_in">Log in</string>
 </resources>

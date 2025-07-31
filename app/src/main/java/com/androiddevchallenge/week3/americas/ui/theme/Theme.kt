@@ -16,30 +16,36 @@
 package com.androiddevchallenge.week3.americas.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-
-private val DarkColorPalette = darkColors(
-    primary = purple200,
-    primaryVariant = purple700,
-    secondary = teal200,
-)
+import androidx.compose.ui.graphics.Color
 
 private val LightColorPalette = lightColors(
-    primary = purple500,
-    primaryVariant = purple700,
-    secondary = teal200,
-    /* Other default colors to override
-background = Color.White,
-surface = Color.White,
-onPrimary = Color.White,
-onSecondary = Color.Black,
-onBackground = Color.Black,
-onSurface = Color.Black,
-     */
+    primary = Yellow,
+    background = Purple,
+    surface = White,
+    onPrimary = Gray900,
+    onBackground = White,
+    onSurface = Gray900,
 )
+
+private val DarkColorPalette = darkColors(
+    primary = Yellow,
+    background = Gray900,
+    surface = Gray700,
+    onPrimary = Gray900,
+    onBackground = White,
+    onSurface = White,
+)
+
+val Colors.custom1: Color
+    @Composable get() = Green
+
+val Colors.custom2: Color
+    @Composable get() = Red
 
 @Composable
 fun WeTradeTheme(

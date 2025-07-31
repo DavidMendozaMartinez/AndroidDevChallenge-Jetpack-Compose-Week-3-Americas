@@ -17,7 +17,10 @@ package com.androiddevchallenge.week3.americas.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val purple200 = Color(0xFFBB86FC)
-val purple500 = Color(0xFF6200EE)
-val purple700 = Color(0xFF3700B3)
-val teal200 = Color(0xFF03DAC5)
+val Red = Color(0xFFD93C19)
+val Purple = Color(0xFF322049)
+val Green = Color(0xFF39A844)
+val Yellow = Color(0xFFE3DA00)
+val Gray700 = Color(0xFF2D2D2D)
+val Gray900 = Color(0xFF232323)
+val White = Color(0xFFFFFFFF)

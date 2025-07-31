@@ -18,4 +18,19 @@
     <string name="log_in_placeholder_email">Email address</string>
     <string name="log_in_placeholder_password">Password</string>
     <string name="log_in_button_log_in">Log in</string>
+
+    <string name="home_tab_account">Account</string>
+    <string name="home_tab_watchlist">Watchlist</string>
+    <string name="home_tab_profile">Profile</string>
+    <string name="home_balance_title">Balance</string>
+    <string name="home_balance_today">%s today</string>
+    <string name="home_button_transact">Transact</string>
+    <string name="home_filter_week">Week</string>
+    <string name="home_filter_etfs">ETFs</string>
+    <string name="home_filter_stocks">Stocks</string>
+    <string name="home_filter_funds">Funds</string>
+    <string name="home_positions_title">Position</string>
+
+    <string name="format_usd">$%s</string>
+    <string name="format_percentage">%s%%</string>
 </resources>

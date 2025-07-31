@@ -15,24 +15,22 @@
  */
 package com.androiddevchallenge.week3.americas.feature.welcome
 
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
-import kotlinx.serialization.Serializable
-
-@Serializable
-object WelcomeRoute
-
-fun NavGraphBuilder.welcomeScreen() {
-    composable<WelcomeRoute> {
-        WelcomeRoute()
-    }
-}
+import androidx.compose.ui.tooling.preview.Preview
+import com.androiddevchallenge.week3.americas.ui.theme.WeTradeTheme
 
 @Composable
-internal fun WelcomeRoute(modifier: Modifier = Modifier) {
-    WelcomeScreen(
-        modifier = modifier,
-    )
+internal fun WelcomeScreen(modifier: Modifier = Modifier) {
+}
+
+@Preview(name = "Light Theme", uiMode = UI_MODE_NIGHT_NO)
+@Preview(name = "Dark Theme", uiMode = UI_MODE_NIGHT_YES)
+@Composable
+private fun WelcomeScreenPreview() {
+    WeTradeTheme {
+        WelcomeScreen()
+    }
 }

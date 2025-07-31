@@ -18,7 +18,6 @@ package com.androiddevchallenge.week3.americas.feature.login
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -73,7 +72,7 @@ internal fun LogInScreen(
         contentWindowInsets = WindowInsets.safeDrawing
             .exclude(insets = WindowInsets.statusBars)
             .exclude(insets = WindowInsets.ime),
-        backgroundColor = if (isSystemInDarkTheme()) MaterialTheme.colors.background else MaterialTheme.colors.surface,
+        backgroundColor = if (MaterialTheme.colors.isLight) MaterialTheme.colors.surface else MaterialTheme.colors.background,
         modifier = modifier,
     ) { contentPadding ->
         Column(

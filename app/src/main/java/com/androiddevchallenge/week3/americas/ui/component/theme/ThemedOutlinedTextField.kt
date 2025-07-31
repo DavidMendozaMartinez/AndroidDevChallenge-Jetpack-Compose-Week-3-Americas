@@ -78,7 +78,13 @@ fun ThemedOutlinedTextField(
         minLines = minLines,
         interactionSource = interactionSource,
         shape = MaterialTheme.shapes.small,
-        colors = TextFieldDefaults.outlinedTextFieldColors(textColor = MaterialTheme.colors.onSurface),
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            textColor = MaterialTheme.colors.onSurface,
+            unfocusedBorderColor = MaterialTheme.colors.onSurface.copy(alpha = CustomContentAlpha.contentAlpha),
+            leadingIconColor = MaterialTheme.colors.onSurface.copy(alpha = CustomContentAlpha.contentAlpha),
+            trailingIconColor = MaterialTheme.colors.onSurface.copy(alpha = CustomContentAlpha.contentAlpha),
+            placeholderColor = MaterialTheme.colors.onSurface.copy(alpha = CustomContentAlpha.contentAlpha),
+        ),
     )
 }
 
@@ -103,6 +109,14 @@ private fun iconOrNull(
     null
 }
 
+private object CustomContentAlpha {
+    val contentAlpha: Float
+        @Composable get() {
+            val lightTheme = MaterialTheme.colors.isLight
+            return if (lightTheme) ALPHA_CONTENT_COLOR_LIGHT else ALPHA_CONTENT_COLOR_DARK
+        }
+}
+
 @Preview(showBackground = true)
 @Composable
 private fun ThemedOutlinedTextFieldPreview() {
@@ -117,5 +131,7 @@ private fun ThemedOutlinedTextFieldPreview() {
     }
 }
 
+private const val ALPHA_CONTENT_COLOR_LIGHT: Float = 0.709f
+private const val ALPHA_CONTENT_COLOR_DARK: Float = 0.777f
 private val LeadingIconSize: Dp = 24.dp
 private val TrailingIconSize: Dp = 24.dp

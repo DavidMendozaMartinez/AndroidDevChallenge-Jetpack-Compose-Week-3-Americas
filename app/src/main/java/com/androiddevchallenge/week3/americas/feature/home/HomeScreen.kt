@@ -20,17 +20,45 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import com.androiddevchallenge.week3.americas.feature.home.model.AccountUiState
+import com.androiddevchallenge.week3.americas.feature.home.model.HomeScreenUiState
+import com.androiddevchallenge.week3.americas.feature.home.model.preview.PreviewBalanceUiStateFactory
+import com.androiddevchallenge.week3.americas.feature.home.model.preview.PreviewPositionUiStateFactory
 import com.androiddevchallenge.week3.americas.ui.theme.WeTradeTheme
+import kotlinx.collections.immutable.toImmutableList
 
 @Composable
-internal fun HomeScreen(modifier: Modifier = Modifier) {
+internal fun HomeScreen(
+    uiState: HomeScreenUiState,
+    modifier: Modifier = Modifier,
+) {
 }
 
 @Preview(name = "Light Theme", uiMode = UI_MODE_NIGHT_NO)
 @Preview(name = "Dark Theme", uiMode = UI_MODE_NIGHT_YES)
 @Composable
-private fun HomeScreenPreview() {
+private fun HomeScreenPreview(
+    @PreviewParameter(provider = HomeScreenPreviewParameterProvider::class) uiState: HomeScreenUiState,
+) {
     WeTradeTheme {
-        HomeScreen()
+        HomeScreen(
+            uiState = uiState,
+        )
     }
+}
+
+private class HomeScreenPreviewParameterProvider : PreviewParameterProvider<HomeScreenUiState> {
+    override val values: Sequence<HomeScreenUiState>
+        get() = sequenceOf(
+            HomeScreenUiState(
+                accountUiState = AccountUiState(
+                    balanceUiState = PreviewBalanceUiStateFactory.positive(),
+                    positions = List(size = 10) {
+                        if (it % 2 == 0) PreviewPositionUiStateFactory.positive() else PreviewPositionUiStateFactory.negative()
+                    }.toImmutableList(),
+                ),
+            ),
+        )
 }

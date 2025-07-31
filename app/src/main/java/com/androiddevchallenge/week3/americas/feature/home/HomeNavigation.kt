@@ -16,11 +16,15 @@
 package com.androiddevchallenge.week3.americas.feature.home
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
+import com.androiddevchallenge.week3.americas.feature.home.model.HomeScreenUiState
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -37,8 +41,14 @@ fun NavController.navigateToHome(navOptions: NavOptions? = null) {
 }
 
 @Composable
-internal fun HomeRoute(modifier: Modifier = Modifier) {
+internal fun HomeRoute(
+    modifier: Modifier = Modifier,
+    viewModel: HomeViewModel = viewModel(factory = HomeViewModel.Factory),
+) {
+    val uiState: HomeScreenUiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     HomeScreen(
+        uiState = uiState,
         modifier = modifier,
     )
 }

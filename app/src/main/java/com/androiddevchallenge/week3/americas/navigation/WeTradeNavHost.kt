@@ -19,6 +19,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.androiddevchallenge.week3.americas.feature.home.homeScreen
+import com.androiddevchallenge.week3.americas.feature.home.navigateToHome
 import com.androiddevchallenge.week3.americas.feature.login.logInScreen
 import com.androiddevchallenge.week3.americas.feature.login.navigateToLogIn
 import com.androiddevchallenge.week3.americas.feature.welcome.WelcomeRoute
@@ -40,7 +42,9 @@ fun WeTradeNavHost(
         )
 
         logInScreen(
-            onLogInClick = {},
+            onLogInClick = { navController.navigateToHome() },
         )
+
+        homeScreen()
     }
 }

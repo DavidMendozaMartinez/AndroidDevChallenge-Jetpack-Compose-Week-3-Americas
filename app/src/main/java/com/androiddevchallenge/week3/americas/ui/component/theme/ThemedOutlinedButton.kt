@@ -55,7 +55,6 @@ fun ThemedOutlinedButton(
         colors = ButtonDefaults.outlinedButtonColors(
             backgroundColor = Color.Transparent,
             contentColor = MaterialTheme.colors.primary,
-            disabledContentColor = Color.Unspecified,
         ),
         contentPadding = contentPadding,
     ) {

@@ -49,6 +49,8 @@ internal fun HomeRoute(
 
     HomeScreen(
         uiState = uiState,
+        onTransactClick = {},
+        onFilterClick = {},
         modifier = modifier,
     )
 }

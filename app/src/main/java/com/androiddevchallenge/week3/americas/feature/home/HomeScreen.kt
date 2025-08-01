@@ -45,7 +45,9 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.coerceAtLeast
 import androidx.compose.ui.unit.dp
+import com.androiddevchallenge.week3.americas.feature.home.component.Account
 import com.androiddevchallenge.week3.americas.feature.home.model.AccountUiState
+import com.androiddevchallenge.week3.americas.feature.home.model.BalanceFilterUiState
 import com.androiddevchallenge.week3.americas.feature.home.model.HomeScreenUiState
 import com.androiddevchallenge.week3.americas.feature.home.model.HomeTabUiState
 import com.androiddevchallenge.week3.americas.feature.home.model.preview.PreviewBalanceUiStateFactory
@@ -59,6 +61,8 @@ import kotlinx.coroutines.launch
 @Composable
 internal fun HomeScreen(
     uiState: HomeScreenUiState,
+    onTransactClick: () -> Unit,
+    onFilterClick: (BalanceFilterUiState) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     BottomSheetScaffold(
@@ -82,9 +86,17 @@ internal fun HomeScreen(
                 onTabClick = { scope.launch { pagerState.animateScrollToPage(page = it) } },
             )
 
-            HorizontalPager(state = pagerState) { page ->
+            HorizontalPager(
+                state = pagerState,
+                userScrollEnabled = false,
+            ) { page ->
                 when (tabs[page]) {
-                    HomeTabUiState.ACCOUNT -> Unit
+                    HomeTabUiState.ACCOUNT -> Account(
+                        uiState = uiState.accountUiState,
+                        onTransactClick = onTransactClick,
+                        onFilterClick = onFilterClick,
+                    )
+
                     HomeTabUiState.WATCHLIST -> Unit
                     HomeTabUiState.PROFILE -> Unit
                 }
@@ -133,6 +145,8 @@ private fun HomeScreenPreview(
     WeTradeTheme {
         HomeScreen(
             uiState = uiState,
+            onTransactClick = {},
+            onFilterClick = {},
         )
     }
 }

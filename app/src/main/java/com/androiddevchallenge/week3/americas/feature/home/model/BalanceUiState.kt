@@ -54,6 +54,7 @@ enum class BalanceFilterUiState(
     ETFS(displayNameResId = R.string.home_filter_etfs),
     STOCKS(displayNameResId = R.string.home_filter_stocks),
     FUNDS(displayNameResId = R.string.home_filter_funds),
+    ADVANCED(displayNameResId = R.string.home_filter_advanced), // In the design there is a filter whose name is not visible
 }
 
 fun Balance.toBalanceUiState(): BalanceUiState = BalanceUiState(

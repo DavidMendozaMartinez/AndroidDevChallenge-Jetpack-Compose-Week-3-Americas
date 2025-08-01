@@ -29,6 +29,7 @@
     <string name="home_filter_etfs">ETFs</string>
     <string name="home_filter_stocks">Stocks</string>
     <string name="home_filter_funds">Funds</string>
+    <string name="home_filter_advanced">Advanced</string>
     <string name="home_positions_title">Position</string>
 
     <string name="format_usd">$%s</string>

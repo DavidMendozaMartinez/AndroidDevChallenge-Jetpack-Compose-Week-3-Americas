@@ -15,6 +15,7 @@
  */
 package com.androiddevchallenge.week3.americas.feature.home.model
 
+import android.content.Context
 import androidx.annotation.DrawableRes
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -35,14 +36,22 @@ data class PositionUiState(
     val changePercentage: Float,
     @DrawableRes val sparklineResId: Int,
 ) {
-    val formattedPrice: String
-        @Composable get() = price.format().asUsd()
+    private val formattedPrice: String = price.format()
+    private val formattedChangePercentage: String = changePercentage.format(explicitSign = true)
 
-    val formattedChangePercentage: String
-        @Composable get() = changePercentage.format(explicitSign = true).asPercentage()
+    val displayedPrice: String
+        @Composable get() = formattedPrice.asUsd()
+
+    val displayedChangePercentage: String
+        @Composable get() = formattedChangePercentage.asPercentage()
 
     val changePercentageColor: Color
         @Composable get() = if (changePercentage >= 0) MaterialTheme.colors.custom1 else MaterialTheme.colors.custom2
+
+    // Non-Composable alternatives for use outside Compose (e.g. text measurement)
+    fun getDisplayedPrice(context: Context) = formattedPrice.asUsd(context = context)
+
+    fun getDisplayedChangePercentage(context: Context) = formattedChangePercentage.asPercentage(context = context)
 }
 
 fun Position.toPositionUiState(): PositionUiState = PositionUiState(

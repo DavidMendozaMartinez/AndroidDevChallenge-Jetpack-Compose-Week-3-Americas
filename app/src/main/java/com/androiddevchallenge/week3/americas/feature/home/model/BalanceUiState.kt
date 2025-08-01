@@ -34,12 +34,13 @@ data class BalanceUiState(
     val total: BigDecimal,
     val change: Float,
     val filters: ImmutableList<BalanceFilterUiState>,
+    val selectedFilter: BalanceFilterUiState?,
     @DrawableRes val chartResId: Int,
 ) {
-    val formattedTotal: String
+    val displayedTotal: String
         @Composable get() = total.format().asUsd()
 
-    val formattedChange: String
+    val displayedChange: String
         @Composable get() = change.format(explicitSign = true)
 
     val changeColor: Color
@@ -57,9 +58,10 @@ enum class BalanceFilterUiState(
     ADVANCED(displayNameResId = R.string.home_filter_advanced), // In the design there is a filter whose name is not visible
 }
 
-fun Balance.toBalanceUiState(): BalanceUiState = BalanceUiState(
+fun Balance.toBalanceUiState(selectedFilter: BalanceFilterUiState?): BalanceUiState = BalanceUiState(
     total = total,
     change = change,
     filters = BalanceFilterUiState.entries.toImmutableList(),
+    selectedFilter = selectedFilter,
     chartResId = R.drawable.home_illos,
 )

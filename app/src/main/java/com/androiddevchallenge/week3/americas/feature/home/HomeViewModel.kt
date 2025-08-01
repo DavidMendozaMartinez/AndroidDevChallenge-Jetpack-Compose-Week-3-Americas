@@ -36,7 +36,7 @@ class HomeViewModel(
     val uiState: StateFlow<HomeScreenUiState> = MutableStateFlow(
         value = HomeScreenUiState(
             accountUiState = AccountUiState(
-                balanceUiState = balanceRepository.getBalance().toBalanceUiState(),
+                balanceUiState = balanceRepository.getBalance().toBalanceUiState(selectedFilter = null),
                 positions = positionRepository.getPositions().map { it.toPositionUiState() }.toImmutableList(),
             ),
         ),

@@ -15,6 +15,7 @@
  */
 package com.androiddevchallenge.week3.americas.ui.extension
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.androiddevchallenge.week3.americas.R
@@ -24,3 +25,8 @@ fun String.asUsd(): String = stringResource(id = R.string.format_usd, formatArgs
 
 @Composable
 fun String.asPercentage(): String = stringResource(id = R.string.format_percentage, formatArgs = arrayOf(this))
+
+// Non-Composable alternatives
+fun String.asUsd(context: Context): String = context.resources.getString(R.string.format_usd, this)
+
+fun String.asPercentage(context: Context): String = context.resources.getString(R.string.format_percentage, this)

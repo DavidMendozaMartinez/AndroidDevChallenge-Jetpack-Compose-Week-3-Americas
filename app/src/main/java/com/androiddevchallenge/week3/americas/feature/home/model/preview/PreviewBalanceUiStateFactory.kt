@@ -27,11 +27,13 @@ object PreviewBalanceUiStateFactory {
         total: BigDecimal = BigDecimal(73_589.01),
         change: Float = 412.35f,
         filters: ImmutableList<BalanceFilterUiState> = BalanceFilterUiState.entries.toImmutableList(),
+        selectedFilter: BalanceFilterUiState? = null,
         chartResId: Int = R.drawable.home_illos,
     ): BalanceUiState = BalanceUiState(
         total = total,
         change = change,
         filters = filters,
+        selectedFilter = selectedFilter,
         chartResId = chartResId,
     )
 }

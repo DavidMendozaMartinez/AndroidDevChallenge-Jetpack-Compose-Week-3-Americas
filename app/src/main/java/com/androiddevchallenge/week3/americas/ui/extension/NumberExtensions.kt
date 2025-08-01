@@ -21,7 +21,7 @@ import java.text.DecimalFormatSymbols
 import java.util.Locale
 
 fun Float.format(
-    pattern: String = "#.##",
+    pattern: String = "#,##0.##",
     explicitSign: Boolean = false,
     locale: Locale = Locale.getDefault(),
 ): String {
@@ -31,7 +31,7 @@ fun Float.format(
 }
 
 fun BigDecimal.format(
-    pattern: String = "#.##",
+    pattern: String = "#,##0.##",
     locale: Locale = Locale.getDefault(),
 ): String {
     val symbols = DecimalFormatSymbols(locale)

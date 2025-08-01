@@ -30,6 +30,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -54,6 +55,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.androiddevchallenge.week3.americas.R
 import com.androiddevchallenge.week3.americas.ui.component.theme.ThemedButton
@@ -79,6 +81,7 @@ internal fun LogInScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(state = rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Header()
 
@@ -105,6 +108,7 @@ internal fun LogInScreen(
                     modifier = Modifier
                         .padding(vertical = 16.dp)
                         .imePadding()
+                        .widthIn(max = ContentMaxWidth)
                         .fillMaxWidth(),
                 )
             }
@@ -143,7 +147,9 @@ private fun EmailTextField(
     ThemedOutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .widthIn(max = ContentMaxWidth)
+            .fillMaxWidth(),
         placeholder = stringResource(id = R.string.log_in_placeholder_email),
         leadingIconPainter = rememberVectorPainter(image = Icons.Default.MailOutline),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
@@ -160,7 +166,9 @@ private fun PasswordTextField(
     ThemedOutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .widthIn(max = ContentMaxWidth)
+            .fillMaxWidth(),
         placeholder = stringResource(id = R.string.log_in_placeholder_password),
         leadingIconPainter = rememberVectorPainter(image = Icons.Default.Password),
         visualTransformation = PasswordVisualTransformation(),
@@ -179,3 +187,5 @@ private fun LogInScreenPreview() {
         )
     }
 }
+
+private val ContentMaxWidth: Dp = 500.dp

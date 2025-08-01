@@ -36,8 +36,8 @@ data class PositionUiState(
     val changePercentage: Float,
     @DrawableRes val sparklineResId: Int,
 ) {
-    private val formattedPrice: String = price.format()
-    private val formattedChangePercentage: String = changePercentage.format(explicitSign = true)
+    private val formattedPrice: String get() = price.format()
+    private val formattedChangePercentage: String get() = changePercentage.format(explicitSign = true)
 
     val displayedPrice: String
         @Composable get() = formattedPrice.asUsd()

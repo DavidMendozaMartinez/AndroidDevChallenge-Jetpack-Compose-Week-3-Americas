@@ -37,10 +37,10 @@ data class BalanceUiState(
     val selectedFilter: BalanceFilterUiState?,
     @DrawableRes val chartResId: Int,
 ) {
-    val displayedTotal: String
+    val displayTotal: String
         @Composable get() = total.format().asUsd()
 
-    val displayedChange: String
+    val displayChange: String
         @Composable get() = change.format(explicitSign = true)
 
     val changeColor: Color

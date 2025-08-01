@@ -75,7 +75,7 @@ fun Balance(
         )
 
         Text(
-            text = uiState.displayedTotal,
+            text = uiState.displayTotal,
             modifier = Modifier
                 .paddingFromBaseline(top = 48.dp, bottom = 24.dp)
                 .padding(horizontal = 16.dp),
@@ -84,7 +84,7 @@ fun Balance(
         )
 
         Text(
-            text = stringResource(id = R.string.home_balance_today, formatArgs = arrayOf(uiState.displayedChange)),
+            text = stringResource(id = R.string.home_balance_today, formatArgs = arrayOf(uiState.displayChange)),
             modifier = Modifier
                 .paddingFromBaseline(top = 16.dp, bottom = 32.dp)
                 .padding(horizontal = 16.dp),

@@ -39,19 +39,19 @@ data class PositionUiState(
     private val formattedPrice: String get() = price.format()
     private val formattedChangePercentage: String get() = changePercentage.format(explicitSign = true)
 
-    val displayedPrice: String
+    val displayPrice: String
         @Composable get() = formattedPrice.asUsd()
 
-    val displayedChangePercentage: String
+    val displayChangePercentage: String
         @Composable get() = formattedChangePercentage.asPercentage()
 
     val changePercentageColor: Color
         @Composable get() = if (changePercentage >= 0) MaterialTheme.colors.custom1 else MaterialTheme.colors.custom2
 
     // Non-Composable alternatives for use outside Compose (e.g. text measurement)
-    fun getDisplayedPrice(context: Context) = formattedPrice.asUsd(context = context)
+    fun getDisplayPrice(context: Context) = formattedPrice.asUsd(context = context)
 
-    fun getDisplayedChangePercentage(context: Context) = formattedChangePercentage.asPercentage(context = context)
+    fun getDisplayChangePercentage(context: Context) = formattedChangePercentage.asPercentage(context = context)
 }
 
 fun Position.toPositionUiState(): PositionUiState = PositionUiState(

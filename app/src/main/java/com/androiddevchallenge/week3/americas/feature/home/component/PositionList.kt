@@ -89,14 +89,14 @@ private fun Position(
     ) {
         Column(modifier = Modifier.defaultMinSize(minWidth = maxOf(NumbersDefaultMinWidth, numbersRequiredMinWidth))) {
             Text(
-                text = uiState.displayedPrice,
+                text = uiState.displayPrice,
                 modifier = Modifier.paddingFromBaseline(top = 24.dp),
                 color = MaterialTheme.colors.onSurface,
                 style = MaterialTheme.typography.body1,
             )
 
             Text(
-                text = uiState.displayedChangePercentage,
+                text = uiState.displayChangePercentage,
                 modifier = Modifier.paddingFromBaseline(top = 16.dp, bottom = 16.dp),
                 color = uiState.changePercentageColor,
                 style = MaterialTheme.typography.body1,
@@ -143,7 +143,7 @@ private fun calculateNumbersRequiredMinWidth(items: ImmutableList<PositionUiStat
 
     val maxWidthPx: Int = remember(key1 = items) {
         val numbers: List<String> = items.flatMap {
-            listOf(it.getDisplayedPrice(context = context), it.getDisplayedChangePercentage(context = context))
+            listOf(it.getDisplayPrice(context = context), it.getDisplayChangePercentage(context = context))
         }
         numbers.maxOf { textMeasurer.measure(text = it, style = style).size.width }
     }

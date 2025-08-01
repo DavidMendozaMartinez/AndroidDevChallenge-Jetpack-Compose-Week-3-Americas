@@ -17,10 +17,16 @@ package com.androiddevchallenge.week3.americas.feature.home
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.safeDrawing
@@ -30,13 +36,20 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.BottomSheetScaffold
+import androidx.compose.material.BottomSheetScaffoldState
+import androidx.compose.material.BottomSheetState
+import androidx.compose.material.BottomSheetValue
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Tab
 import androidx.compose.material.Text
+import androidx.compose.material.rememberBottomSheetScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -45,7 +58,10 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.coerceAtLeast
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.lerp
+import com.androiddevchallenge.week3.americas.R
 import com.androiddevchallenge.week3.americas.feature.home.component.Account
+import com.androiddevchallenge.week3.americas.feature.home.component.PositionList
 import com.androiddevchallenge.week3.americas.feature.home.model.AccountUiState
 import com.androiddevchallenge.week3.americas.feature.home.model.BalanceFilterUiState
 import com.androiddevchallenge.week3.americas.feature.home.model.HomeScreenUiState
@@ -65,21 +81,51 @@ internal fun HomeScreen(
     onFilterClick: (BalanceFilterUiState) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val scope: CoroutineScope = rememberCoroutineScope()
+
+    val tabs: ImmutableList<HomeTabUiState> = remember { HomeTabUiState.entries.toImmutableList() }
+    val pagerState: PagerState = rememberPagerState(pageCount = { tabs.size })
+    val isBottomSheetVisible: Boolean = tabs[pagerState.currentPage] == HomeTabUiState.ACCOUNT
+
+    val scaffoldState: BottomSheetScaffoldState = rememberBottomSheetScaffoldState()
+    val bottomSheetState: BottomSheetState = scaffoldState.bottomSheetState
+    val bottomSheetProgress: Float = bottomSheetState.progress(from = BottomSheetValue.Collapsed, to = BottomSheetValue.Expanded)
+
+    val windowInsets: WindowInsets = WindowInsets.safeDrawing
+    val topInset: Dp = with(LocalDensity.current) { windowInsets.getTop(density = this).toDp() }
+    val bottomInset: Dp = with(LocalDensity.current) { windowInsets.getBottom(density = this).toDp() }
+
+    val sheetPeekHeight: Dp by animateDpAsState(
+        targetValue = if (isBottomSheetVisible) SheetPeekBaseHeight + bottomInset else 0.dp,
+    )
+
     BottomSheetScaffold(
-        sheetContent = {},
+        sheetContent = {
+            if (isBottomSheetVisible) {
+                Column {
+                    BottomSheetPeek(progress = bottomSheetProgress, topPadding = topInset, bottomPadding = bottomInset)
+
+                    PositionList(
+                        items = uiState.accountUiState.positions,
+                        modifier = Modifier.windowInsetsPadding(
+                            insets = windowInsets.only(sides = WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom),
+                        ),
+                    )
+                }
+            }
+        },
         modifier = modifier,
-        sheetPeekHeight = 0.dp,
+        scaffoldState = scaffoldState,
+        sheetShape = RectangleShape,
+        sheetElevation = 0.dp,
+        sheetPeekHeight = sheetPeekHeight,
     ) { contentPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .windowInsetsPadding(insets = WindowInsets.safeDrawing)
+                .windowInsetsPadding(insets = windowInsets)
                 .padding(paddingValues = contentPadding),
         ) {
-            val tabs: ImmutableList<HomeTabUiState> = remember { HomeTabUiState.entries.toImmutableList() }
-            val pagerState: PagerState = rememberPagerState(pageCount = { tabs.size })
-            val scope: CoroutineScope = rememberCoroutineScope()
-
             HomeTabRow(
                 tabs = tabs,
                 selectedTabIndex = pagerState.currentPage,
@@ -102,6 +148,35 @@ internal fun HomeScreen(
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun BottomSheetPeek(
+    progress: Float,
+    topPadding: Dp,
+    bottomPadding: Dp,
+    modifier: Modifier = Modifier,
+) {
+    val expandedHeight: Dp = SheetPeekBaseHeight + topPadding
+    val collapsedHeight: Dp = SheetPeekBaseHeight + bottomPadding
+    val interpolatedHeight: Dp = lerp(start = collapsedHeight, stop = expandedHeight, fraction = progress)
+
+    val alignmentVerticalBias: Float = -1f + 2f * progress
+    val alignment = BiasAlignment(horizontalBias = 0f, verticalBias = alignmentVerticalBias)
+
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(height = interpolatedHeight),
+        contentAlignment = alignment,
+    ) {
+        Text(
+            text = stringResource(id = R.string.home_positions_title),
+            modifier = Modifier.paddingFromBaseline(top = SheetPeekBaselinePaddingTop, bottom = SheetPeekBaselinePaddingBottom),
+            color = MaterialTheme.colors.onSurface,
+            style = MaterialTheme.typography.subtitle1,
+        )
     }
 }
 
@@ -164,3 +239,7 @@ private class HomeScreenPreviewParameterProvider : PreviewParameterProvider<Home
             ),
         )
 }
+
+private val SheetPeekBaselinePaddingTop: Dp = 40.dp
+private val SheetPeekBaselinePaddingBottom: Dp = 24.dp
+private val SheetPeekBaseHeight: Dp = SheetPeekBaselinePaddingTop + SheetPeekBaselinePaddingBottom

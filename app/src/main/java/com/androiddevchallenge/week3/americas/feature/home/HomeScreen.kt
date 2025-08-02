@@ -15,8 +15,10 @@
  */
 package com.androiddevchallenge.week3.americas.feature.home
 
+import android.app.Activity
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.activity.compose.LocalActivity
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,6 +46,8 @@ import androidx.compose.material.Tab
 import androidx.compose.material.Text
 import androidx.compose.material.rememberBottomSheetScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -59,6 +63,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.coerceAtLeast
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
+import androidx.core.view.WindowInsetsControllerCompat
 import com.androiddevchallenge.week3.americas.R
 import com.androiddevchallenge.week3.americas.feature.home.component.Account
 import com.androiddevchallenge.week3.americas.feature.home.component.PositionList
@@ -98,6 +103,11 @@ internal fun HomeScreen(
     val sheetPeekHeight: Dp by animateDpAsState(
         targetValue = if (isBottomSheetVisible) SheetPeekBaseHeight + bottomInset else 0.dp,
     )
+
+    if (MaterialTheme.colors.isLight) {
+        SetStatusBarAppearanceEffect(isBottomSheetExpanded = bottomSheetState.isExpanded)
+        ResetStatusBarAppearanceDisposeEffect()
+    }
 
     BottomSheetScaffold(
         sheetContent = {
@@ -209,6 +219,23 @@ private fun HomeTabRow(
             }
         }
     }
+}
+
+@Composable
+private fun SetStatusBarAppearanceEffect(isBottomSheetExpanded: Boolean) {
+    val activity: Activity = LocalActivity.current ?: return
+    val controller = WindowInsetsControllerCompat(activity.window, activity.window.decorView)
+
+    LaunchedEffect(key1 = isBottomSheetExpanded) { controller.isAppearanceLightStatusBars = isBottomSheetExpanded }
+}
+
+@Composable
+private fun ResetStatusBarAppearanceDisposeEffect() {
+    val activity: Activity = LocalActivity.current ?: return
+    val controller = WindowInsetsControllerCompat(activity.window, activity.window.decorView)
+
+    val initialValue: Boolean = remember { controller.isAppearanceLightStatusBars }
+    DisposableEffect(key1 = Unit) { onDispose { controller.isAppearanceLightStatusBars = initialValue } }
 }
 
 @Preview(name = "Light Theme", uiMode = UI_MODE_NIGHT_NO)

@@ -27,6 +27,7 @@ import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.systemGestureExclusion
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -106,7 +107,9 @@ fun Balance(
             selected = uiState.selectedFilter,
             onItemClick = onFilterClick,
             contentPadding = PaddingValues(horizontal = 16.dp),
-            modifier = Modifier.padding(top = 16.dp),
+            modifier = Modifier
+                .padding(top = 16.dp)
+                .systemGestureExclusion(),
         )
 
         Image(

@@ -32,7 +32,9 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.safeGestures
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.union
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -96,7 +98,9 @@ internal fun HomeScreen(
     val bottomSheetState: BottomSheetState = scaffoldState.bottomSheetState
     val bottomSheetProgress: Float = bottomSheetState.progress(from = BottomSheetValue.Collapsed, to = BottomSheetValue.Expanded)
 
-    val windowInsets: WindowInsets = WindowInsets.safeDrawing
+    val windowInsets: WindowInsets = WindowInsets.safeDrawing.union(
+        insets = WindowInsets.safeGestures.only(sides = WindowInsetsSides.Vertical),
+    )
     val topInset: Dp = with(LocalDensity.current) { windowInsets.getTop(density = this).toDp() }
     val bottomInset: Dp = with(LocalDensity.current) { windowInsets.getBottom(density = this).toDp() }
 

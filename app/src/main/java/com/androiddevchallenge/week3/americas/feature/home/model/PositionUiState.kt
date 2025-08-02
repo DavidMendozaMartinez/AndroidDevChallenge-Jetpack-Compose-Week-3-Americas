@@ -34,7 +34,7 @@ data class PositionUiState(
     val name: String,
     val price: BigDecimal,
     val changePercentage: Float,
-    @DrawableRes val sparklineResId: Int,
+    @param:DrawableRes val sparklineResId: Int,
 ) {
     private val formattedPrice: String get() = price.format()
     private val formattedChangePercentage: String get() = changePercentage.format(explicitSign = true)

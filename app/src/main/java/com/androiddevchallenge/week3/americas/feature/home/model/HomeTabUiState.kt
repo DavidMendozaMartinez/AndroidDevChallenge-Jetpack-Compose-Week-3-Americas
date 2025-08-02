@@ -19,7 +19,7 @@ import androidx.annotation.StringRes
 import com.androiddevchallenge.week3.americas.R
 
 enum class HomeTabUiState(
-    @StringRes val displayNameResId: Int,
+    @param:StringRes val displayNameResId: Int,
 ) {
     ACCOUNT(displayNameResId = R.string.home_tab_account),
     WATCHLIST(displayNameResId = R.string.home_tab_watchlist),

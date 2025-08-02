@@ -35,7 +35,7 @@ data class BalanceUiState(
     val change: Float,
     val filters: ImmutableList<BalanceFilterUiState>,
     val selectedFilter: BalanceFilterUiState?,
-    @DrawableRes val chartResId: Int,
+    @param:DrawableRes val chartResId: Int,
 ) {
     val displayTotal: String
         @Composable get() = total.format().asUsd()
@@ -48,7 +48,7 @@ data class BalanceUiState(
 }
 
 enum class BalanceFilterUiState(
-    @StringRes val displayNameResId: Int,
+    @param:StringRes val displayNameResId: Int,
     val isExpandable: Boolean = false,
 ) {
     WEEK(displayNameResId = R.string.home_filter_week, isExpandable = true),

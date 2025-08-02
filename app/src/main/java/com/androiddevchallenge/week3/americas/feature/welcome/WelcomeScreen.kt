@@ -96,8 +96,8 @@ private fun Background(modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(name = "Light Theme", uiMode = UI_MODE_NIGHT_NO)
-@Preview(name = "Dark Theme", uiMode = UI_MODE_NIGHT_YES)
+@Preview(name = "Light Theme", widthDp = 360, heightDp = 640, uiMode = UI_MODE_NIGHT_NO)
+@Preview(name = "Dark Theme", widthDp = 360, heightDp = 640, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 private fun WelcomeScreenPreview() {
     WeTradeTheme {
